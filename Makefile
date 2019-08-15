@@ -1,8 +1,7 @@
-
-.PHONY: export-worker-service answers-service-repo fields-service-repo export-service-repo groups-service-repo users-service-repo form-service-repo
+.PHONY: api-gateway-repo answers-service-repo fields-service-repo export-service-repo groups-service-repo users-service-repo form-service-repo
 .DEFAULT: main
 main:
-	@echo "make export-worker-service"
+#	@echo "make export-worker-service"
 	@echo "make answers-service-repo"
 	@echo "make fields-service-repo"
 	@echo "make api-gateway-repo"
@@ -10,14 +9,14 @@ main:
 	@echo "make groups-service-repo"
 	@echo "make users-service-repo"
 	@echo "make form-service-repo"
-	@echo "make client-ui-repo"
+#	@echo "make client-ui-repo"
 
 
-export-worker-service: 
-	git clone https://github.com/lv-412-python/export-worker-service.git
-	cd ./export-worker-service; \
-	docker build -t file . ; \
-	docker run file
+#export-worker-service: 
+#	git clone https://github.com/lv-412-python/export-worker-service.git
+#	cd ./export-worker-service; \
+#	docker build -t file . ; \
+#	docker run file
 
 answers-service-repo: 
 	git clone https://github.com/lv-412-python/answers-service-repo.git
@@ -30,9 +29,11 @@ fields-service-repo:
 	cd ./fields-service-repo; \
 	docker build -t file . ; \
 	docker run file		
-#api-gateway-repo:
-#	git clone https://github.com/lv-412-python/api-gateway-repo.git
-	
+api-gateway-repo:
+	git clone https://github.com/lv-412-python/api-gateway-repo.git
+	cd ./api-gateway-repo; \
+	docker-compose up -d; \
+	docker-compose up
 export-service-repo: 
 	git clone https://github.com/lv-412-python/export-service-repo.git
 	cd ./export-service-repo; \
